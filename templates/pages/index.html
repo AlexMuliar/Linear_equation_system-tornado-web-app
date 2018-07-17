@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" href="{{ static_url( "styles/common.css" ) }}">
+            <title>SLE calculator</title>
+    </head>
+    <body class="back-graund">
+        <script>
+                function printForm(n, method, session){
+                    form = "<p class='common-text'>Enter your equation system:</p>" +
+                        "<form class='common-text' method='POST'>" +
+                        `<input type='hidden' name='size' value='${ n }'>` +
+                        `<input type='hidden' name='method' value='${ method }'>` +
+                        `<input type='hidden' name='session' value='${ session }'>`;
+                    for (var i = 0; i < n; i++){
+                        j = 0;
+                        for (var j = 0; j < n; j++){
+                            form += `<input class="mtrx-element" type="text" name="[${ i }][${ j }]" value="${i + j ** 3 + 1}">X<sub>${ j+1 }</sub>`;
+                            if (j + 1 < n){
+                                form += " + ";
+                            }
+                        }
+                        form += ` = <input class="mtrx-element" type="text" name="[${ i }][${ j }]" value="${( i**2 - i)}"><br>`;
+                    }
+                    if (method == 'iter'){
+                        form += ' Accuracy: <input width="60px" class="mtrx-element" type="text" name="accuracy" value="0.01">'
+                    }
+                    form += "<br><button class='main-btn' type='submit'>Calculate</button>"
+                    return form;
+                }
+                function getData() {
+                    var id = document.getElementById("session").value;
+                    var e = document.getElementById("dimention");
+                    var size = e.options[e.selectedIndex].value;
+                    var r = document.getElementById("method");
+                    var method = r.options[r.selectedIndex].value;
+                    document.getElementById("showForm").innerHTML = printForm(size, method, id);
+                }
+        </script>
+        <input type="hidden" id="session" value="{{ session }}">
+        <header class="header-text">SLE calculator</header>
+        <span class="common-text">
+            Select parameters your equation system:
+        </span><br>
+        <select class="selector" id="method" name="method">
+            <option value="iter">Iteration</option>
+            <option value="gauss">Jordan-Gauss</option>
+            <option value="kramer">Kramer</option>
+            <option value="matrix">Matrix</option>
+        </select>
+        <select class="selector" id="dimention" name="size">
+            {% for i in range %}
+                <option value="{{ i }}">{{ i }}x{{ i }}</option>
+            {% end %}
+        </select>
+        <button class="main-btn" onclick="getData()" type="submit">
+            Confirm
+        </button>
+        <br>
+        <p class="common-text">
+            Or input solution-ID for get old solution:
+        </p>
+        <form method="GET" action="storage/">
+            <input class="input-key" type="text" name="session" placeholder="Solution ID">
+            <button class="main-btn" type="submit">
+                Get
+            </button>
+        </form>
+        <p id='showForm'></p>
+    </body>
+</html>

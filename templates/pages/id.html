@@ -1,0 +1,22 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ static_url( "styles/common.css" ) }}">
+        <title>Solution ID</title>
+    </head>
+    <body class="back-graund">
+        <span class="common-text">
+            {% if added %}
+                <h3>Solution saved by id: {{ ID }} </h3>
+            {% else %}
+                <h3>Solution real was added</h3> 
+            {% end %}
+            <a href="/">
+                <button class="main-btn">
+                    Go to start page
+                </button>
+            </a>
+            
+        </span>
+    </body>
+</html>

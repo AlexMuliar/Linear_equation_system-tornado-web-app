@@ -1,0 +1,32 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ static_url( "styles/common.css" ) }}">
+        <title>Solution</title>
+        <script>
+            function saveSulution(){
+
+            }
+        </script>
+    </head>
+    <body class="back-graund">
+        <span class="common-text">
+            <h1>Equation system solution:</h1>
+            {% module Result(solution)%} <br>
+            {% if not loaded %}
+            <form action="storage/" method="POST">
+                <input type="hidden" name="session" value="{{ session }}">
+                <input type="hidden" name="solution" value="{{ solution }}">
+                <button class='main-btn' type="submit" id='save' >
+                    Save
+                </button>
+            </form>
+            {% end %}
+            <a href="/">
+                <button class="main-btn">
+                    Go to start page
+                </button>
+            </a>
+        </span>
+    </body>
+</html>

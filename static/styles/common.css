@@ -1,0 +1,42 @@
+.back-graund{
+    background-color: rgba(34, 34, 34, 0.329);
+}
+.header-text{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px; 
+    text-align: center;
+}
+.common-text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+.selector{
+    padding-left: 10px; 
+    padding-right: 5px; 
+    font-size: 19px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main-btn{
+    padding-left: 10px; 
+    padding-right: none; 
+    font-size: 19px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #4CAF50;
+    border: #000;
+    color: white;
+}
+.mtrx-element{
+    height: 30px;
+    width: 40px;
+    font-size: 20px;
+    border-bottom: none;
+}
+.input-key{
+    padding-left: 10px; 
+    padding-right: 5px; 
+    font-size: 19px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 400px;
+}
